@@ -6,21 +6,21 @@ import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import java.sql.*;
-import java.util.*;
-import org.json.*;
 import java.nio.file.*;
+import java.util.*;
+import java.sql.*;
+import org.json.*;
+
 import afterwork.objects.Restaurant;
 import afterwork.objects.AW;
-import afterwork.db.ReadDBtoAW;
-import afterwork.db.ReadDBtoRestaurant;
+import afterwork.db.ReadDBtoList;
 import afterwork.json.Json;
 import afterwork.json.Write;
 
 public class AWServlet extends HttpServlet {
 
   @Override
-  public void init() throws ServletException { //initierar koppling till sql i lib-mappen, från var?
+  public void init() throws ServletException {
     try {
       Class.forName("org.sqlite.JDBC");
     } catch(ClassNotFoundException cnfe) {
@@ -37,27 +37,14 @@ public class AWServlet extends HttpServlet {
                       response.getOutputStream(), UTF_8), true);) {
 
       try {
-        List<AW> listAW = ReadDBtoAW.get();
-        List<Restaurant> listRestaurants = ReadDBtoRestaurant.get();
+        String foodMessage = request.getParameter("food");
+        String cityMessage = request.getParameter("city");
 
-        String json = Json.create(listAW, listRestaurants);
+        List<Restaurant> listAW = ReadDBtoList.get(foodMessage, cityMessage);
 
-        Write.jsonFile(json, "jsonAfterWork");
-        Write.httpResponse(json, response);
+        String jsonAW = Json.create(listAW);
 
-        /* (rikard)
-            String id = request.getParameter("id");
-            String action =request.getParameter("action");
-            System.out.println("id: " + id);
-            System.out.println("action: " + action);
-          */
-
-          /* (övning)
-          String format = request.getParameter("format");
-          if(format!=null && format.equals("json")){
-            response.setContentType("application/json");
-          }
-          */
+        Write.httpResponse(jsonAW, response);
 
       } catch (JSONException jsone) {
         System.err.println("JSON error: " + jsone.getMessage());
@@ -84,11 +71,10 @@ public class AWServlet extends HttpServlet {
                     sqle.getMessage() + "</em>");
       }
 
-    } catch (IOException ioe){
+    } catch (IOException ioe) {
       System.err.println("Error writing file: " + ioe.getMessage());
       response.setStatus(HttpServletResponse
                         .SC_INTERNAL_SERVER_ERROR);
-      // kan inte ha out här, kan man skriva respons på annat sätt?
     }
 
   }

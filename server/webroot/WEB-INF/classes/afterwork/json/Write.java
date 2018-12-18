@@ -3,8 +3,6 @@ package afterwork.json;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import java.io.IOException;
 import java.nio.file.*;
-
-import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.PrintWriter;
 import java.io.OutputStreamWriter;

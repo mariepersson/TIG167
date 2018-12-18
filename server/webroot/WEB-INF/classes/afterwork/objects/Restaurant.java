@@ -7,7 +7,7 @@ public class Restaurant {
   private String adress;
   private String web;
   private String info;
-  private int AW_id;  //istället för id ha en referens till en instans av klassen AW
+  private AW aw;
 
   public String getName() {
     return name;
@@ -25,43 +25,36 @@ public class Restaurant {
     return info;
   }
 
-  public int getAW_id() {
-    return AW_id;
+  public AW getAW() {
+    return aw;
   }
 
-  private Restaurant(Builder builder) { // ny konstruktor med builder
+  private Restaurant(Builder builder) {
     this.name = builder.name;
     this.adress = builder.adress;
     this.web = builder.web;
     this.info = builder.info;
-    this.AW_id = builder.AW_id;
+    this.aw = builder.aw;
   }
 
   public String toString() {
     StringBuilder str = new StringBuilder();
-    return str.append(AW_id).append(name).append(", ").append(adress).toString();
+    return str.append(name)
+              .append(", ")
+              .append(adress)
+              .toString();
   }
 
-  public static class Builder { // static hör till klassen och inte instansen
+  public static class Builder {
     private String name;
     private String adress;
     private String web;
     private String info;
-    private int AW_id;
+    private AW aw;
 
-    public Builder(String name, String adress) {  //behöver en kostruktor om mamn skall tvinga att några variabler inte får vara null
+    public Builder(String name, String adress) {
       this.name = name;
       this.adress = adress;
-    }
-
-    public Builder name(String name) {//behövs denna när kostruktor finns?
-      this.name = name;
-      return this;
-    }
-
-    public Builder adress(String adress) {
-      this.adress = adress;
-      return this;
     }
 
     public Builder web(String web) {
@@ -74,13 +67,13 @@ public class Restaurant {
       return this;
     }
 
-    public Builder AW_id(int AW_id) {
-      this.AW_id = AW_id;
+    public Builder aw(AW aw) {
+      this.aw = aw;
       return this;
     }
 
     public Restaurant build() {
-      return new Restaurant(this); //this här är en Builder
+      return new Restaurant(this);
     }
 
   }

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- The xml-file for the servlet in the AfterWork project. -->
+<!-- Using utf-8 to enable the use of swedish caracters. -->
 
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+<!-- The servlet aw is connected to the class AWServlet. -->
   <servlet>
     <servlet-name>aw</servlet-name>
     <servlet-class>servlets.AWServlet</servlet-class>
   </servlet>
 
+<!-- The servlet aw is connected to the url call aw. -->
   <servlet-mapping>
     <servlet-name>aw</servlet-name>
     <url-pattern>/aw</url-pattern>
