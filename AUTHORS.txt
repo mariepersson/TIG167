@@ -1,0 +1,8 @@
+AUTHORS
+
+AfterWork project:
+
+Maria Ahlstedt
+Marie Persson
+
+This project was completed during the course TIG167 at Gothenburg University.
