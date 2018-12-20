@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Project in course TIG167: AfterWorkServlet
 
 # Compile
