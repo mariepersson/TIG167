@@ -17,8 +17,16 @@ import afterwork.db.ReadDBtoList;
 import afterwork.json.Json;
 import afterwork.json.Write;
 
+/**
+ * Controles tne request to the servlet and creates a sutable response.
+ */
 public class AWServlet extends HttpServlet {
 
+  /**
+   * Initiate the servlet.
+   *
+   * @throws ServletException if the servlet doesn't work.
+   */
   @Override
   public void init() throws ServletException {
     try {
@@ -29,6 +37,14 @@ public class AWServlet extends HttpServlet {
     }
   }
 
+  /**
+   * Takes the parameters from the http request and uses them to get specific
+   * information about Rsstaurants holding After Work from the database. With
+   * the information it creates a json text that it sends as a http response. 
+   *
+   * @param request contains information about the parameters sent to the servlet.
+   * @param response controles the response the servlet will send.
+   */
   @Override
   public void doGet(HttpServletRequest request,
                     HttpServletResponse response) {

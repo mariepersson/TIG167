@@ -5,8 +5,22 @@ import java.sql.*;
 import afterwork.objects.Restaurant;
 import afterwork.objects.AW;
 
+/**
+ * A class that enables the collecting of information from a database contaiong
+ * information about Restaurants that hold After Works.
+ */
 public class ReadDBtoList {
 
+  /**
+   * A method that takes parameters describing what is of interest in the
+   * database and uses them to collect specific Restarurants and After Works.
+   * Then it returns this infoamtion in a list of Ewstaurants holding After Work.
+   *
+   * @param food the parameter food.
+   * @param city the parameter city.
+   * @return a list with information about Restaurants that hold After Work.
+   * @throws SQLException if the SQL statement can not be performed.
+   */
   public static List<Restaurant> get(String food, String city) throws SQLException {
     List<Restaurant> restaurants = new ArrayList<>();
     String callDB = "jdbc:sqlite:AfterWork.db";

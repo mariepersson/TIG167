@@ -1,6 +1,5 @@
 README Servlet
 
-
 Information about the servlet and java program needed for the AfterWork project.
 To get more information about the code you can find javadoc in the folder doc.
 
@@ -17,13 +16,13 @@ Stand in the folder Server.
 There you should see at least the folders and files:
 webroot
 doc
-compileAndRunServlet.sh
-winstone.jar
 AfterWork.db
+compileAndRunServlet.sh
 READMEServlet.txt
+winstone.jar
 
-Compile and run the servlet by using the script compileAndRunServlet.sh (for windows).
-./compileAndRunServlet.sh
+Compile and run the servlet by using the script compileAndRunServlet.sh.
+./compileAndRunServlet.sh (for windows)
 
 Now you are ready to start withdrawing information about different After Work's
 that match your preferences from the servlet!

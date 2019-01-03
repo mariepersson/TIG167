@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # A script that will create javadoc for the project.
 
 # The folders with the files that should be documented.
